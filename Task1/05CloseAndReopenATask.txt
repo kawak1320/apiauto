@@ -1,0 +1,611 @@
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[09:08:28]
+└─╼[/run/media/kawak/Datos/JalaSoft/TrainingBranches/APIAutomation/apiauto/Task1]
+ ╰╼[main %|u= origin/main]╾─╼[a190ce3]
+▶ curl -X POST "https://api.todoist.com/rest/v2/tasks/7232948497/close" \
+    -H "Authorization: Bearer $token"
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[09:08:33]
+└─╼[/run/media/kawak/Datos/JalaSoft/TrainingBranches/APIAutomation/apiauto/Task1]
+ ╰╼[main %|u= origin/main]╾─╼[a190ce3]
+▶ curl "https://api.todoist.com/rest/v2/tasks/7232948497" \
+    -H "Authorization: Bearer $token"
+{
+        "id": "7232948497",
+        "assigner_id": null,
+        "assignee_id": null,
+        "project_id": "2319575865",
+        "section_id": null,
+        "parent_id": null,
+        "order": 5,
+        "content": "PICKLE RICK FROM JSON!!!!!!",
+        "description": "TESTING CHANGING DESC",
+        "is_completed": true,
+        "labels": [],
+        "priority": 4,
+        "comment_count": 0,
+        "creator_id": "45681548",
+        "created_at": "2023-09-15T23:43:54.361386Z",
+        "due": {
+                "date": "2023-09-16",
+                "string": "tomorrow at 12:00",
+                "lang": "en",
+                "is_recurring": false,
+                "datetime": "2023-09-16T12:00:00"
+        },
+        "url": "https://todoist.com/showTask?id=7232948497",
+        "duration": null
+}
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[09:09:13]
+└─╼[/run/media/kawak/Datos/JalaSoft/TrainingBranches/APIAutomation/apiauto/Task1]
+ ╰╼[main %|u= origin/main]╾─╼[a190ce3]
+▶ curl -X GET \
+  https://api.todoist.com/rest/v2/tasks \
+  -H "Authorization: Bearer $token"
+[
+        {
+                "id": "7226576861",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575876",
+                "section_id": null,
+                "parent_id": null,
+                "order": 1,
+                "content": "Conectar mi calendario de trabajo con Todoist",
+                "description": "[Integraciones de calendario | Todoist](https://en.todoist.com/es/integrations?category=calendars&utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=work)",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:18.869617Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576861",
+                "duration": null
+        },
+        {
+                "id": "7226576868",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575877",
+                "section_id": "134043556",
+                "parent_id": null,
+                "order": 1,
+                "content": "Hacer una revisión semanal de mis tareas y objetivos",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 2,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.027819Z",
+                "due": {
+                        "date": "2023-09-17",
+                        "string": "ev sun",
+                        "lang": "en",
+                        "is_recurring": true
+                },
+                "url": "https://todoist.com/showTask?id=7226576868",
+                "duration": null
+        },
+        {
+                "id": "7226576869",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575876",
+                "section_id": "134043557",
+                "parent_id": null,
+                "order": 1,
+                "content": "Revisar mi día y planificar con anticipación",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 2,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.033451Z",
+                "due": {
+                        "date": "2023-09-14",
+                        "timezone": "America/Buenos_Aires",
+                        "string": "ev workday at 5pm",
+                        "lang": "en",
+                        "is_recurring": true,
+                        "datetime": "2023-09-14T20:00:00Z"
+                },
+                "url": "https://todoist.com/showTask?id=7226576869",
+                "duration": null
+        },
+        {
+                "id": "7226576876",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575876",
+                "section_id": "134043557",
+                "parent_id": null,
+                "order": 2,
+                "content": "Adaptar mis rutinas _laborales_",
+                "description": "Por ej. hacer rutina para cerrar el día, preparar una reunión semanal con el equipo todos los martes",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.145448Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576876",
+                "duration": null
+        },
+        {
+                "id": "7226576877",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575877",
+                "section_id": "134043556",
+                "parent_id": null,
+                "order": 2,
+                "content": "Añadir más rutinas _personales_",
+                "description": "Por ej. pagar los impuestos cada año, sacar la basura todas las semanas, meditar 10 min todos los días laborales a las 9 am",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.154584Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576877",
+                "duration": null
+        },
+        {
+                "id": "7226576879",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575876",
+                "section_id": "134043558",
+                "parent_id": null,
+                "order": 1,
+                "content": "[Rutina para cerrar el día laboral](https://blog.doist.com/end-work-day/?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=work) (en inglés) 🌖",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.313227Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576879",
+                "duration": null
+        },
+        {
+                "id": "7226576881",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575877",
+                "section_id": "134043559",
+                "parent_id": null,
+                "order": 1,
+                "content": "[7 configuraciones reales de Todoist para robar](https://blog.doist.com/todoist-setup/?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=personal) (en inglés) 💡",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.391251Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576881",
+                "duration": null
+        },
+        {
+                "id": "7226576883",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575876",
+                "section_id": "134043558",
+                "parent_id": null,
+                "order": 2,
+                "content": "[Integraciones de Todoist que aumentarán tu productividad](https://blog.doist.com/todoist-integrations-productivity/?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=work) (en inglés)",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.420080Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576883",
+                "duration": null
+        },
+        {
+                "id": "7226576888",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575876",
+                "section_id": "134043558",
+                "parent_id": null,
+                "order": 3,
+                "content": "Explorar las [plantillas de trabajo](https://todoist.com/es/templates/category/work?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=work) curadas de Todoist",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.511805Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576888",
+                "duration": null
+        },
+        {
+                "id": "7226576889",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575877",
+                "section_id": "134043559",
+                "parent_id": null,
+                "order": 2,
+                "content": "[Organizar la lista de tareas de tu familia con Todoist (Lecciones de los usuarios)](https://blog.doist.com/family-todo-list/?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=personal) (en inglés)",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.532732Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576889",
+                "duration": null
+        },
+        {
+                "id": "7226576894",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575877",
+                "section_id": "134043559",
+                "parent_id": null,
+                "order": 3,
+                "content": "Explorar las [plantillas personales](https://todoist.com/es/templates/category/personal?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=personal) curadas de Todoist",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:19.681354Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226576894",
+                "duration": null
+        },
+        {
+                "id": "7226577026",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575865",
+                "section_id": null,
+                "parent_id": null,
+                "order": 1,
+                "content": "Aprender lo básico con la guía [Primeros pasos](https://todoist.com/es/getting-started?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=inbox) 🔗",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 4,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:24.569344Z",
+                "due": {
+                        "date": "2023-09-13",
+                        "string": "Sep 13",
+                        "lang": "en",
+                        "is_recurring": false
+                },
+                "url": "https://todoist.com/showTask?id=7226577026",
+                "duration": null
+        },
+        {
+                "id": "7226577032",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575865",
+                "section_id": null,
+                "parent_id": null,
+                "order": 2,
+                "content": "Hacer el [quiz de métodos de productividad](https://todoist.com/es/productivity-methods?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=inbox)",
+                "description": "Obtén una recomendación especializada de Todoist",
+                "is_completed": false,
+                "labels": [],
+                "priority": 3,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:24.723074Z",
+                "due": {
+                        "date": "2023-09-14",
+                        "string": "Sep 14",
+                        "lang": "en",
+                        "is_recurring": false
+                },
+                "url": "https://todoist.com/showTask?id=7226577032",
+                "duration": null
+        },
+        {
+                "id": "7226577035",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575884",
+                "section_id": "134043573",
+                "parent_id": null,
+                "order": 1,
+                "content": "Ver las fechas de mis exámenes y planificar con anticipación",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 2,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:24.801231Z",
+                "due": {
+                        "date": "2023-09-15",
+                        "string": "ev fri",
+                        "lang": "en",
+                        "is_recurring": true
+                },
+                "url": "https://todoist.com/showTask?id=7226577035",
+                "duration": null
+        },
+        {
+                "id": "7226577036",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575865",
+                "section_id": null,
+                "parent_id": null,
+                "order": 3,
+                "content": "Descargar [aplicaciones y complementos](https://todoist.com/es/help/articles/download-todoist) adicionales para 💻,⌚,🖥,📱 y 📧",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:24.849598Z",
+                "due": {
+                        "date": "2023-09-16",
+                        "string": "Sep 16",
+                        "lang": "en",
+                        "is_recurring": false
+                },
+                "url": "https://todoist.com/showTask?id=7226577036",
+                "duration": null
+        },
+        {
+                "id": "7226577037",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575884",
+                "section_id": "134043573",
+                "parent_id": null,
+                "order": 2,
+                "content": "Añadir mis rutinas de _educación_",
+                "description": "Por ej. revisar mis notas cada lunes, calificar los trabajos de literatura todos los días por 5 días",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:24.938866Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226577037",
+                "duration": null
+        },
+        {
+                "id": "7226577040",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575884",
+                "section_id": "134043574",
+                "parent_id": null,
+                "order": 1,
+                "content": "[Guía de Todoist para estudiantes](https://blog.doist.com/todoist-guide-for-students/?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=education) 🎓 y [Guía de Todoist para Educadores](https://blog.doist.com/an-educators-guide-to-todoist/?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=education) 📖",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:25.196770Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226577040",
+                "duration": null
+        },
+        {
+                "id": "7226577042",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575884",
+                "section_id": "134043574",
+                "parent_id": null,
+                "order": 2,
+                "content": "Explorar las [plantillas de educación](https://todoist.com/es/templates/category/education/?utm_source=todoist&utm_medium=in_app&utm_campaign=onboarding_project&utm_content=education) curadas de Todoist",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 1,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-13T23:07:25.316503Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7226577042",
+                "duration": null
+        },
+        {
+                "id": "7232947582",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575865",
+                "section_id": null,
+                "parent_id": null,
+                "order": 4,
+                "content": "Buy Milk",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 4,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-15T23:43:07.423681Z",
+                "due": {
+                        "date": "2023-09-16",
+                        "string": "tomorrow at 12:00",
+                        "lang": "en",
+                        "is_recurring": false,
+                        "datetime": "2023-09-16T12:00:00"
+                },
+                "url": "https://todoist.com/showTask?id=7232947582",
+                "duration": null
+        },
+        {
+                "id": "7232949024",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575865",
+                "section_id": null,
+                "parent_id": null,
+                "order": 6,
+                "content": "PICKLE RICK! BBB",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 4,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-15T23:44:29.685599Z",
+                "due": {
+                        "date": "2023-09-16",
+                        "string": "tomorrow at 12:00",
+                        "lang": "en",
+                        "is_recurring": false,
+                        "datetime": "2023-09-16T12:00:00"
+                },
+                "url": "https://todoist.com/showTask?id=7232949024",
+                "duration": null
+        },
+        {
+                "id": "7232949349",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575865",
+                "section_id": null,
+                "parent_id": null,
+                "order": 7,
+                "content": "PICKLE RICK! FAIL???",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 4,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-15T23:44:53.544867Z",
+                "due": {
+                        "date": "2023-09-16",
+                        "string": "tomorrow at 12:00",
+                        "lang": "en",
+                        "is_recurring": false,
+                        "datetime": "2023-09-16T12:00:00"
+                },
+                "url": "https://todoist.com/showTask?id=7232949349",
+                "duration": null
+        },
+        {
+                "id": "7232951905",
+                "assigner_id": null,
+                "assignee_id": null,
+                "project_id": "2319575865",
+                "section_id": null,
+                "parent_id": null,
+                "order": 8,
+                "content": "PICKLE RICK FROM JSON!!!!!!",
+                "description": "",
+                "is_completed": false,
+                "labels": [],
+                "priority": 4,
+                "comment_count": 0,
+                "creator_id": "45681548",
+                "created_at": "2023-09-15T23:47:09.462141Z",
+                "due": null,
+                "url": "https://todoist.com/showTask?id=7232951905",
+                "duration": null
+        }
+]
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[09:09:33]
+└─╼[/run/media/kawak/Datos/JalaSoft/TrainingBranches/APIAutomation/apiauto/Task1]
+ ╰╼[main %|u= origin/main]╾─╼[a190ce3]
+▶ curl "https://api.todoist.com/rest/v2/tasks/7232948497" \
+    -H "Authorization: Bearer $token"
+{
+        "id": "7232948497",
+        "assigner_id": null,
+        "assignee_id": null,
+        "project_id": "2319575865",
+        "section_id": null,
+        "parent_id": null,
+        "order": 5,
+        "content": "PICKLE RICK FROM JSON!!!!!!",
+        "description": "TESTING CHANGING DESC",
+        "is_completed": true,
+        "labels": [],
+        "priority": 4,
+        "comment_count": 0,
+        "creator_id": "45681548",
+        "created_at": "2023-09-15T23:43:54.361386Z",
+        "due": {
+                "date": "2023-09-16",
+                "string": "tomorrow at 12:00",
+                "lang": "en",
+                "is_recurring": false,
+                "datetime": "2023-09-16T12:00:00"
+        },
+        "url": "https://todoist.com/showTask?id=7232948497",
+        "duration": null
+}
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[09:12:41]
+└─╼[/run/media/kawak/Datos/JalaSoft/TrainingBranches/APIAutomation/apiauto/Task1]
+ ╰╼[main %|u= origin/main]╾─╼[a190ce3]
+▶ curl -X POST "https://api.todoist.com/rest/v2/tasks/7232948497/reopen" \
+    -H "Authorization: Bearer $token"
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[09:12:53]
+└─╼[/run/media/kawak/Datos/JalaSoft/TrainingBranches/APIAutomation/apiauto/Task1]
+ ╰╼[main %|u= origin/main]╾─╼[a190ce3]
+▶ curl "https://api.todoist.com/rest/v2/tasks/7232948497"     -H "Authorization: Bearer $token"
+{
+        "id": "7232948497",
+        "assigner_id": null,
+        "assignee_id": null,
+        "project_id": "2319575865",
+        "section_id": null,
+        "parent_id": null,
+        "order": 9,
+        "content": "PICKLE RICK FROM JSON!!!!!!",
+        "description": "TESTING CHANGING DESC",
+        "is_completed": false,
+        "labels": [],
+        "priority": 4,
+        "comment_count": 0,
+        "creator_id": "45681548",
+        "created_at": "2023-09-15T23:43:54.361386Z",
+        "due": {
+                "date": "2023-09-16",
+                "string": "tomorrow at 12:00",
+                "lang": "en",
+                "is_recurring": false,
+                "datetime": "2023-09-16T12:00:00"
+        },
+        "url": "https://todoist.com/showTask?id=7232948497",
+        "duration": null
+}
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[09:12:58]
+└─╼[/run/media/kawak/Datos/JalaSoft/TrainingBranches/APIAutomation/apiauto/Task1]
+ ╰╼[main %|u= origin/main]╾─╼[a190ce3]
+▶ 
