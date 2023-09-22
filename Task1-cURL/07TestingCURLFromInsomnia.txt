@@ -1,0 +1,173 @@
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[18:53:18]
+└─╼[~]
+▶ curl --request GET \
+  --url https://api.todoist.com/rest/v2/projects \
+  --header 'Authorization: Bearer e3c6ead750df1cb02373702188918fd86289fe98' \
+  --header 'User-Agent: insomnia/2023.5.8' \
+  --cookie csrf=072dffa7af6d4cbf82ac6a4f150f2603
+[
+        {
+                "id": "2319575865",
+                "parent_id": null,
+                "order": 0,
+                "color": "charcoal",
+                "name": "Inbox",
+                "comment_count": 0,
+                "is_shared": false,
+                "is_favorite": false,
+                "is_inbox_project": true,
+                "is_team_inbox": false,
+                "url": "https://todoist.com/showProject?id=2319575865",
+                "view_style": "list"
+        },
+        {
+                "id": "2319791521",
+                "parent_id": null,
+                "order": 1,
+                "color": "charcoal",
+                "name": "Postman RIck",
+                "comment_count": 0,
+                "is_shared": false,
+                "is_favorite": false,
+                "is_inbox_project": false,
+                "is_team_inbox": false,
+                "url": "https://todoist.com/showProject?id=2319791521",
+                "view_style": "list"
+        },
+        {
+                "id": "2319793158",
+                "parent_id": null,
+                "order": 2,
+                "color": "charcoal",
+                "name": "Insomnia Rick",
+                "comment_count": 0,
+                "is_shared": false,
+                "is_favorite": false,
+                "is_inbox_project": false,
+                "is_team_inbox": false,
+                "url": "https://todoist.com/showProject?id=2319793158",
+                "view_style": "list"
+        }
+]
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[18:53:30]
+└─╼[~]
+▶ export token=e3c6ead750df1cb02373702188918fd86289fe98
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[18:54:09]
+└─╼[~]
+▶ curl --request GET \
+  --url https://api.todoist.com/rest/v2/projects \
+  --header 'Authorization: Bearer $token' \
+  --header 'User-Agent: insomnia/2023.5.8' \
+  --cookie csrf=072dffa7af6d4cbf82ac6a4f150f2603
+Forbidden
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[18:54:44]
+└─╼[~]
+▶ echo $token
+e3c6ead750df1cb02373702188918fd86289fe98
+
+┌─╼[kawak]╾─╼[0][6]╾─╼[18:55:15]
+└─╼[~]
+▶ curl -X GET \                                                                                                           https://api.todoist.com/rest/v2/projects \
+  -H "Authorization: Bearer $token"  
+[
+        {
+                "id": "2319575865",
+                "parent_id": null,
+                "order": 0,
+                "color": "charcoal",
+                "name": "Inbox",
+                "comment_count": 0,
+                "is_shared": false,
+                "is_favorite": false,
+                "is_inbox_project": true,
+                "is_team_inbox": false,
+                "url": "https://todoist.com/showProject?id=2319575865",
+                "view_style": "list"
+        },
+        {
+                "id": "2319791521",
+                "parent_id": null,
+                "order": 1,
+                "color": "charcoal",
+                "name": "Postman RIck",
+                "comment_count": 0,
+                "is_shared": false,
+                "is_favorite": false,
+                "is_inbox_project": false,
+                "is_team_inbox": false,
+                "url": "https://todoist.com/showProject?id=2319791521",
+                "view_style": "list"
+        },
+        {
+                "id": "2319793158",
+                "parent_id": null,
+                "order": 2,
+                "color": "charcoal",
+                "name": "Insomnia Rick",
+                "comment_count": 0,
+                "is_shared": false,
+                "is_favorite": false,
+                "is_inbox_project": false,
+                "is_team_inbox": false,
+                "url": "https://todoist.com/showProject?id=2319793158",
+                "view_style": "list"
+        }
+]
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[18:57:32]
+└─╼[~]
+▶   curl "https://api.todoist.com/rest/v2/tasks" \
+    -X POST \
+    --data '{"content": "ANOTHER RICK!", "due_string": "tomorrow at 12:00", "due_lang": "en", "priority": 4}' \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $token"
+{
+        "id": "7234797661",
+        "assigner_id": null,
+        "assignee_id": null,
+        "project_id": "2319575865",
+        "section_id": null,
+        "parent_id": null,
+        "order": 5,
+        "content": "ANOTHER RICK!",
+        "description": "",
+        "is_completed": false,
+        "labels": [],
+        "priority": 4,
+        "comment_count": 0,
+        "creator_id": "45681548",
+        "created_at": "2023-09-16T21:59:25.298551Z",
+        "due": {
+                "date": "2023-09-17",
+                "string": "tomorrow at 12:00",
+                "lang": "en",
+                "is_recurring": false,
+                "datetime": "2023-09-17T12:00:00"
+        },
+        "url": "https://todoist.com/showTask?id=7234797661",
+        "duration": null
+}
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[18:59:25]
+└─╼[~]
+▶ curl --request DELETE \
+  --url https://api.todoist.com/rest/v2/tasks/7234789661 \
+  -H "Authorization: Bearer $token" \
+  --header 'User-Agent: insomnia/2023.5.8' \
+  --cookie csrf=072dffa7af6d4cbf82ac6a4f150f2603
+
+┌─╼[kawak]╾─╼[0][0]╾─╼[19:00:29]
+└─╼[~]
+▶  curl --request GET \
+  --url https://api.todoist.com/rest/v2/tasks/7234789661 \
+  -H "Authorization: Bearer $token" \
+  --header 'User-Agent: insomnia/2023.5.8' \
+  --cookie csrf=072dffa7af6d4cbf82ac6a4f150f2603
+Task not found
+┌─╼[kawak]╾─╼[0][0]╾─╼[19:01:19]
+└─╼[~]
+▶ 
