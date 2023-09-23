@@ -7,19 +7,23 @@ logger.py
 
 import logging
 import unittest
-import requests
-from nose2.tools import params
 
+import requests
+
+from nose2.tools import params
 from config.config import TOKEN_TODO
 from utils.logger import get_logger
 
-"""
-Test for nose2
-"""
+
 LOGGER = get_logger(__name__, logging.INFO)
 
 
 class Projects(unittest.TestCase):
+    """
+    Projects Tests for Nose2
+    :param
+    :return:
+    """
 
     @classmethod
     def setUpClass(cls):
@@ -31,7 +35,7 @@ class Projects(unittest.TestCase):
 
         print("Token from .env file: ", cls.token)
         cls.headers = {
-            "Authorization": "Bearer {}".format(cls.token)
+            f"Authorization: Bearer {cls.token}"
         }
         cls.url_base = "https://api.todoist.com/rest/v2/projects"
 
@@ -39,7 +43,7 @@ class Projects(unittest.TestCase):
         body_project = {
             "name": "SetupClass"
         }
-        response = requests.post(cls.url_base, headers=cls.headers, data=body_project)
+        response = requests.post(cls.url_base, headers=cls.headers, data=body_project, timeout=10)
 
         cls.project_id = response.json()["id"]
         cls.project_id_update = ""
@@ -49,7 +53,7 @@ class Projects(unittest.TestCase):
         """
         Test get all projects
         """
-        response = requests.get(self.url_base, headers=self.headers)
+        response = requests.get(self.url_base, headers=self.headers, timeout=10)
         assert response.status_code == 200
 
     @params("Pickle Rick", "PyCharm", "Testing")
@@ -60,7 +64,7 @@ class Projects(unittest.TestCase):
         body_project = {
             "name": name_project
         }
-        response = requests.post(self.url_base, headers=self.headers, data=body_project)
+        response = requests.post(self.url_base, headers=self.headers, data=body_project, timeout=10)
         LOGGER.info("Response for create project: %s", response.json())
         self.project_id_update = response.json()["id"]
         LOGGER.debug("Project id generated: %s", self.project_id_update)
@@ -72,32 +76,43 @@ class Projects(unittest.TestCase):
         Test get Project
         """
         url = f"{self.url_base}/{self.project_id}"
-        response = requests.get(url, headers=self.headers)
+        response = requests.get(url, headers=self.headers, timeout=10)
         print(response.json())
         assert response.status_code == 200
 
     def test_delete_project(self):
+        """
+        Test delete Project
+        """
         url = f"{self.url_base}/{self.project_id}"
         print(f"Test Delete: {self.project_id}")
-        response = requests.delete(url, headers=self.headers)
+        response = requests.delete(url, headers=self.headers, timeout=10)
         # validate project has been deleted
         assert response.status_code == 204
 
     def test_update_project(self):
+        """
+        Test update Project
+        """
         url = f"{self.url_base}/{self.project_id_update}"
         data_update = {
             "name": "UpdateProject Test",
             "color": "red"
         }
-        response = requests.post(url, headers=self.headers, data=data_update)
+        response = requests.post(url, headers=self.headers, data=data_update, timeout=10)
         print(response.json())
         assert response.status_code == 200
 
     @classmethod
     def tearDownClass(cls):
+        """
+        TearDown
+        :param
+        :return:
+        """
         print("tearDown Class")
         # delete projects created
         for project in cls.projects_list:
             url = f"{cls.url_base}/{project}"
-            requests.delete(url, headers=cls.headers)
+            requests.delete(url, headers=cls.headers, timeout=10)
             LOGGER.info(f"Deleting project: {project}")
