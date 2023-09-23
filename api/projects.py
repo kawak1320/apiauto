@@ -1,3 +1,10 @@
+"""
+(c) Copyright Jalasoft. 2023
+
+logger.py
+    configuration of logger file
+"""
+
 import logging
 import unittest
 import requests
@@ -30,7 +37,7 @@ class Projects(unittest.TestCase):
 
         # create project to be used in tests
         body_project = {
-            "name": "Project 0"
+            "name": "SetupClass"
         }
         response = requests.post(cls.url_base, headers=cls.headers, data=body_project)
 
@@ -45,7 +52,7 @@ class Projects(unittest.TestCase):
         response = requests.get(self.url_base, headers=self.headers)
         assert response.status_code == 200
 
-    @params("Project 2", "1111111", "!@$$@$!@$")
+    @params("Pickle Rick", "PyCharm", "Testing")
     def test_create_project(self, name_project):
         """
         Test for create project
@@ -79,7 +86,7 @@ class Projects(unittest.TestCase):
     def test_update_project(self):
         url = f"{self.url_base}/{self.project_id_update}"
         data_update = {
-            "name": "Project 2",
+            "name": "UpdateProject Test",
             "color": "red"
         }
         response = requests.post(url, headers=self.headers, data=data_update)
