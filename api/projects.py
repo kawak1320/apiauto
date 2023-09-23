@@ -115,4 +115,4 @@ class Projects(unittest.TestCase):
         for project in cls.projects_list:
             url = f"{cls.url_base}/{project}"
             requests.delete(url, headers=cls.headers, timeout=10)
-            LOGGER.info(f"Deleting project: {project}")
+            LOGGER.info(f"Deleting project: %s {project}")
