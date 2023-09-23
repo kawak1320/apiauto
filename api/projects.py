@@ -14,7 +14,6 @@ from nose2.tools import params
 from config.config import TOKEN_TODO
 from utils.logger import get_logger
 
-
 LOGGER = get_logger(__name__, logging.INFO)
 
 
@@ -35,7 +34,7 @@ class Projects(unittest.TestCase):
 
         print("Token from .env file: ", cls.token)
         cls.headers = {
-            f"Authorization: Bearer {cls.token}"
+            "Authorization": "Bearer {}".format(cls.token)
         }
         cls.url_base = "https://api.todoist.com/rest/v2/projects"
 
