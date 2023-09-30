@@ -4,7 +4,6 @@ import unittest
 import requests
 
 from api.todo_base import TodoBase
-from api.validate_response import ValidateResponse
 from config.config import HEADERS
 from utils.logger import get_logger
 from utils.rest_client import RestClient
