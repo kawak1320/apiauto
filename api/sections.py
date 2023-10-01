@@ -72,3 +72,12 @@ class Sections(unittest.TestCase):
         response = RestClient().send_request("post", session=self.session, url=url,
                                              headers=HEADERS, data=data)
         assert response.status_code == 200
+
+        def test_update_session(self):
+            """
+            Test to delete session
+            :return:
+            """
+            response = RestClient().send_request("delete", session=self.session, url=url,
+                                                 headers=HEADERS, data=data)
+            assert response.status_code == 204
