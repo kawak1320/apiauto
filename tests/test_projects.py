@@ -1,9 +1,22 @@
+"""
+(c) Copyright Jalasoft. 2023
+
+projects.py
+    configuration of logger file
+"""
 import requests
 import pytest
 
 
 class TestProjects:
+    """
+    Class for tests
+    """
     def setup_class(self):
+        """
+        Setup Class only executed one time
+        :return:
+        """
         print("Setup class")
         # arrange of test
         self.token = "9463fd6e63c3ac3e06372045795ef48264968d2c"
@@ -44,7 +57,10 @@ class TestProjects:
 
     @pytest.mark.smoke
     def test_get_project(self, test_get_all_projects):
-
+        """
+        test for get project
+        :return:
+        """
         url = self.url_base + "/" + test_get_all_projects
         response = requests.get(url, headers=self.headers)
         print(response.json())
@@ -52,6 +68,10 @@ class TestProjects:
 
     @pytest.mark.update
     def test_update_project(self, test_get_all_projects):
+        """
+        test for update project
+        :return:
+        """
         url = self.url_base + "/" + test_get_all_projects
         data_update = {
             "name": "Project 2",
@@ -63,11 +83,18 @@ class TestProjects:
 
     @pytest.mark.smoke
     def test_delete_project(self, test_get_all_projects):
+        """
+        test for delete project
+        :return:
+        """
         url = self.url_base + "/" + test_get_all_projects
         response = requests.delete(url, headers=self.headers)
-        # print(response.json())
         assert response.status_code == 204
 
     @classmethod
     def teardown_class(cls):
-         print("teardown")
+        """
+        test for teardown
+        :return:
+        """
+        print("teardown")
