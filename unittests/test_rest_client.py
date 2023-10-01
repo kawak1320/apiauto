@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2023
+
+projects.py
+    configuration of logger file
+"""
 import json
 import logging
 import unittest

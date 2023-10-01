@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2023
+
+projects.py
+    configuration of logger file
+"""
 class Singleton(type):
     """
     This is the singleton class to created only one instance of the
