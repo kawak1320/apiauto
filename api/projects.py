@@ -26,6 +26,7 @@ class Projects(unittest.TestCase):
     def setUpClass(cls):
         """
         Setup Class only executed one time
+        :return:
         """
         cls.url_base = "https://api.todoist.com/rest/v2/projects"
         cls.session = requests.Session()
@@ -34,17 +35,19 @@ class Projects(unittest.TestCase):
 
     def test_get_all_projects(self):
         """
-        Test get all projects
+        Test get all project
+        :return:
         """
         response = RestClient().send_request(method_name="get", session=self.session,
                                              url=self.url_base, headers=HEADERS)
-        ValidateResponse().validate_response(actual_response=response, method="get", expected_status_code=200,
-                                             feature="projects")
+        ValidateResponse().validate_response(actual_response=response, method="get",
+                                             expected_status_code=200, feature="projects")
 
     @params("Project 2", "1111111")
     def test_create_project(self, name_project):
         """
-        Test for create project
+        Test create project
+        :return:
         """
         body_project = {
             "name": name_project
@@ -56,12 +59,13 @@ class Projects(unittest.TestCase):
         project_id = response["body"]["id"]
         LOGGER.debug("Project id generated: %s", project_id)
         self.projects_list.append(project_id)
-        ValidateResponse().validate_response(actual_response=response, method="post", expected_status_code=200,
-                                             feature="project")
+        ValidateResponse().validate_response(actual_response=response, method="post",
+                                             expected_status_code=200, feature="project")
 
     def test_get_project(self):
         """
-        Test get Project
+        Test get project
+        :return:
         """
         project_created = self.create_project("Project X")
         project_id = project_created["body"]["id"]
@@ -69,8 +73,8 @@ class Projects(unittest.TestCase):
         response = RestClient().send_request("get", session=self.session,
                                              url=url, headers=HEADERS)
         self.projects_list.append(project_id)
-        ValidateResponse().validate_response(actual_response=response, method="get", expected_status_code=200,
-                                             feature="project")
+        ValidateResponse().validate_response(actual_response=response, method="get",
+                                             expected_status_code=200, feature="project")
 
     def test_delete_project(self):
         """
@@ -82,8 +86,8 @@ class Projects(unittest.TestCase):
         url = f"{self.url_base}/{project_id}"
         response = RestClient().send_request(method_name="delete", session=self.session, url=url,
                                              headers=HEADERS)
-        ValidateResponse().validate_response(actual_response=response, method="delete", expected_status_code=204,
-                                             feature="project")
+        ValidateResponse().validate_response(actual_response=response, method="delete",
+                                             expected_status_code=204, feature="project")
 
     def test_update_project(self):
         """
@@ -100,10 +104,14 @@ class Projects(unittest.TestCase):
         response = RestClient().send_request("post", session=self.session, url=url,
                                              headers=HEADERS, data=data_update)
         self.projects_list.append(project_id_update)
-        ValidateResponse().validate_response(actual_response=response, method="post", expected_status_code=200,
-                                             feature="project")
+        ValidateResponse().validate_response(actual_response=response, method="post",
+                                             expected_status_code=200, feature="project")
 
     def create_project(self, name_project):
+        """
+        Test create project
+        :return:
+        """
         body_project = {
             "name": name_project
         }
@@ -113,6 +121,10 @@ class Projects(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        """
+        Test tearDown class
+        :return:
+        """
         print("tearDown Class")
         # delete projects created
         for project in cls.projects_list:

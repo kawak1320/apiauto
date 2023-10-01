@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2023
+
+projects.py
+    configuration of logger file
+"""
 import json
 import logging
 
@@ -9,19 +15,33 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 class ValidateResponse(metaclass=Singleton):
-
-    def validate_response(self, actual_response, method=None, expected_status_code=200, feature=None):
+    """
+    Class for validations
+    """
+    def validate_response(self, actual_response, method=None, expected_status_code=200,
+                          feature=None):
+        """
+        Test to validate responses
+        :return:
+        """
         print(actual_response)
         file_name = f"{ABS_PATH}/api/input_data/{feature}_{method}_{expected_status_code}.json"
         input_data = self.get_input_data_from_json(file_name)
         print(input_data)
         if 'body' in actual_response and actual_response["body"] is not None:
             # compare actual with input data
-            self.validate_value(actual_response["status"], input_data["response"]["status"], field="status")
-            self.validate_value(actual_response["headers"], input_data["response"]["headers"], field="headers")
-            self.validate_value(actual_response["body"], input_data["response"]["body"], field="body")
+            self.validate_value(actual_response["status"], input_data["response"]["status"],
+                                field="status")
+            self.validate_value(actual_response["headers"], input_data["response"]["headers"],
+                                field="headers")
+            self.validate_value(actual_response["body"], input_data["response"]["body"],
+                                field="body")
 
     def validate_value(self, actual_value, expected_value, field):
+        """
+        Test to validate fields
+        :return:
+        """
         LOGGER.debug("Validating %s:", field)
         msg_error = f"Expecting '{expected_value}' but received '{actual_value}'"
         if "body" in field:
@@ -40,7 +60,7 @@ class ValidateResponse(metaclass=Singleton):
     @staticmethod
     def get_input_data_from_json(file_name):
         """
-
+        Test to get input data
         :param file_name:
         :return:
         """

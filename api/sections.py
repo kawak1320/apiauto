@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2023
+
+projects.py
+    configuration of logger file
+"""
 import logging
 import unittest
 
@@ -12,9 +18,16 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 class Sections(unittest.TestCase):
+    """
+    Class for sessions endpoint
+    """
 
     @classmethod
     def setUpClass(cls):
+        """
+        Setup Class only executed one time
+        :return:
+        """
         cls.url_section = "https://api.todoist.com/rest/v2/sections"
         cls.session = requests.Session()
 
@@ -34,12 +47,19 @@ class Sections(unittest.TestCase):
         assert response.status_code == 200
 
     def test_get_all_sections(self):
-
+        """
+        Test to get all sessions
+        :return:
+        """
         response = TodoBase().get_all_sections()
         LOGGER.info("Number of sections returned: %s", len(response.json()))
         assert response.status_code == 200
 
     def test_get_all_sections_by_project(self):
+        """
+        Test to get all sessions by project id
+        :return:
+        """
         if self.project_id:
             url_section = f"{self.url_section}?project_id={self.project_id}"
 
@@ -49,6 +69,10 @@ class Sections(unittest.TestCase):
         assert response.status_code == 200
 
     def test_get_section(self):
+        """
+        Test to get session
+        :return:
+        """
         response = TodoBase().get_all_sections()
         section_id = response.json()[0]["id"]
         LOGGER.info("Section Id: %s", section_id)
@@ -57,6 +81,7 @@ class Sections(unittest.TestCase):
                                              url=url_section)
         assert response.status_code == 200
 
+    # ToDo: Improve this method, once i fix the issue with nose2
     def test_update_session(self):
         """
         Test to update session
@@ -73,7 +98,8 @@ class Sections(unittest.TestCase):
                                              headers=HEADERS, data=data)
         assert response.status_code == 200
 
-        def test_update_session(self):
+        # ToDo: Finish this incomplete method, once i fix the issue with nose2
+        def test_delete_session(self):
             """
             Test to delete session
             :return:

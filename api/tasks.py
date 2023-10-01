@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2023
+
+projects.py
+    configuration of logger file
+"""
 import logging
 import unittest
 
@@ -12,46 +18,75 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 class Tasks(unittest.TestCase):
-
+    """
+    Class for tasks endpoint
+    """
     @classmethod
     def setUpClass(cls):
+        """
+        Setup Class only executed one time
+        :return:
+        """
         cls.url_tasks = "https://api.todoist.com/rest/v2/tasks"
         cls.session = requests.Session()
 
         cls.project_id = TodoBase().get_all_projects().json()[1]["id"]
         cls.section_id = TodoBase().get_all_sections().json()[1]["id"]
         cls.task_id = TodoBase().get_all_tasks().json()[1]["id"]
-    def test_create_task(self):
 
+    def test_create_task(self):
+        """
+        Test to create task
+        :return:
+        """
         response = self.create_task()
         assert response.status_code == 200
 
     def test_create_task_with_project_id(self):
+        """
+        Test to create task with project id
+        :return:
+        """
         project_id = self.project_id
         response = self.create_task(project_id=project_id)
         assert response.status_code == 200
 
     def test_create_task_with_section_id(self):
+        """
+        Test to create task with session id
+        :return:
+        """
         section_id = self.section_id
         response = self.create_task(section_id=section_id)
         assert response.status_code == 200
 
     def test_get_all_tasks(self):
-
+        """
+        Test to get all tasks
+        :return:
+        """
         response = TodoBase().get_all_tasks()
         LOGGER.info("Number of tasks returned: %s", len(response.json()))
         assert response.status_code == 200
 
     def test_get_task_by_id(self):
+        """
+        Test to get task by id
+        :return:
+        """
         task_id = self.task_id
         LOGGER.info("Task Id: %s", task_id)
         url_task = f"{self.url_tasks}/{task_id}"
-        response = RestClient().send_request("get", session=self.session, headers=HEADERS, url=url_task)
+        response = RestClient().send_request("get", session=self.session, headers=HEADERS,
+                                             url=url_task)
 
         assert response.status_code == 200
 
     def test_close_task(self):
-
+        """
+        Test to close task
+        :return:
+        """
         task_id = self.task_id
         LOGGER.info("Task Id: %s", task_id)
         url_task_close = f"{self.url_tasks}/{task_id}/close"
@@ -61,6 +96,10 @@ class Tasks(unittest.TestCase):
         assert response.status_code == 204
 
     def test_reopen_task(self):
+        """
+        Test to reopen task
+        :return:
+        """
         # valid task open
         task_id = self.create_task().json()["id"]
 
@@ -79,6 +118,10 @@ class Tasks(unittest.TestCase):
         assert response.status_code == 204
 
     def create_task(self, project_id=None, section_id=None):
+        """
+        Test to create task
+        :return:
+        """
         data = {
             "content": "Task inside section",
             "due_string": "tomorrow at 12:00",
