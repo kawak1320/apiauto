@@ -137,3 +137,26 @@ class Tasks(unittest.TestCase):
                                              url=self.url_tasks, data=data)
 
         return response
+
+    # ToDo: Improve repeated code.
+    def test_update_task(self):
+
+        data = {
+            "content": "Task inside section Updated"
+        }
+
+        task_id = self.create_task().json()["id"]
+        LOGGER.info("Task Id: %s", task_id)
+        url_task_update = f"{self.url_tasks}/{task_id}"
+        response = RestClient().send_request("post", session=self.session, headers=HEADERS,
+                                             url=url_task_update, data=data)
+        assert response.status_code == 200
+
+    def test_delete_task(self):
+
+        task_id = self.create_task().json()["id"]
+        LOGGER.info("Task Id: %s", task_id)
+        url_task_update = f"{self.url_tasks}/{task_id}"
+        response = RestClient().send_request("delete", session=self.session, headers=HEADERS,
+                                             url=url_task_update)
+        assert response.status_code == 204
